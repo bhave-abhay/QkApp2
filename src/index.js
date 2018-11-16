@@ -5,5 +5,6 @@ function register($) {
 }
 
 module.exports = {
-	register
+	register,
+	version: '1.1.0'
 };
