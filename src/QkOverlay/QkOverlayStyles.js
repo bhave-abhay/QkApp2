@@ -10,7 +10,6 @@ module.exports = {
 		'opacity': '0.75',
 		'display': 'flex',
 		'align-items': 'center',
-		'text-align': 'center',
-		'z-index': '10'
+		'text-align': 'center'
 	}
 };
