@@ -1,0 +1,16 @@
+{
+	"name": "QkApp",
+	"version": "1.0.0",
+	"description": "JQuery-Bootstrap based util library for a simplified UI development workflow",
+	"main": "src/index.js",
+	"author": "Abhay Bhave <abhay.bhave@gadreinfotech.com>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"build-umd-release": "node .\\node_modules\\browserify\\bin\\cmd.js -e src\\index.js -o build\\umd\\qkapp.bundle.js -s QkAppLib",
+		"build-umd-debug": "node .\\node_modules\\browserify\\bin\\cmd.js -e src\\index.js -o build\\umd\\qkapp.bundle.js -s QkAppLib -d"
+	},
+	"devDependencies": {
+		"browserify": "^16.2.3"
+	}
+}
