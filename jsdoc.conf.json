@@ -1,0 +1,50 @@
+{
+    "tags": {
+        "allowUnknownTags": false
+    },
+    "source": {
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["plugins/staticFiles"],
+    "templates": {
+      "logoFile": "static/logo.svg",
+      "cleverLinks": true,
+      "monospaceLinks": false,
+      "dateFormat": "ddd MMM Do YYYY",
+      "outputSourceFiles": true,
+      "outputSourcePath": true,
+      "systemName": "QkApp",
+      "footer": "",
+      "copyright": "(c) 2018 Gadre InfoTech Pvt. Ltd. (IND)",
+      "navType": "inline",
+      "theme": "Paper",
+      "linenums": true,
+      "collapseSymbols": false,
+      "inverseNav": true,
+      "protocol": "html://",
+      "methodHeadingReturns": false,
+      "search": false
+    },
+    "markdown": {
+      "parser": "gfm",
+      "hardwrap": true
+    },
+    "staticFiles": {
+       "include": ["static:src/docs/static"],
+       "exclude": [],
+       "includePattern": ".+\\.(png|jpg|svg)$",
+       "excludePattern": "(^|\\/|\\\\)_",
+       "recursive": true,
+       "recursiveLevel": 2
+    },
+    "opts": {
+        "encoding": "utf8",
+        "sort": false,
+        "template": "node_modules/ink-docstrap/template",
+        "destination": "docs/",
+        "recurse": true,
+        "tutorials": "src/docs/tutorials",
+                "class-hierarchy": { "showList": true }
+    }
+}

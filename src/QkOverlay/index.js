@@ -17,10 +17,20 @@ function CreateOverlayElt(sMsgHtml, sImgHtml) {
 	return eltOverlay;
 }
 
+/**
+ * QkOverlay. An overlay plugin
+ * @class
+ */
+ 
 var QkOverlay = function () {
 	var eltOverlay = null;
 	this.css('position', 'relative');
 
+	/**
+    * Shows the overlay
+	* @param sMsgHtml {string} message html to be shown on overlay
+    * @param sImgHtml {string} loader image html to be shown on overlay
+    */
 	this.show_overlay = function (sMsgHtml, sImgHtml) {
 		if (eltOverlay !== null) {
 			eltOverlay.detach();
@@ -31,6 +41,9 @@ var QkOverlay = function () {
 		this.append(eltOverlay);
 	};
 
+	/**
+	* Hides the overlay
+	*/
 	this.hide_overlay = function () {
 		console.log('Hiding overlay');
 		if (eltOverlay !== null) {
@@ -39,6 +52,9 @@ var QkOverlay = function () {
 		}
 	};
 
+	/**
+	* Returns whether this overlay is currently shown
+	*/
 	this.is_shown = function () {
 		return (eltOverlay !== null);
 	}
