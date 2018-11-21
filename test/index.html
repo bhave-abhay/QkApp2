@@ -36,7 +36,7 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="../docs/index.html">Docs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
@@ -52,23 +52,51 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-		<h1 class="mt-5">QkApp V. <span class="spanQkAppVersion"></span> tests</h1>
-
-		<h3 class="mt-5">QkOverlay 1</h3>
-		<div class="btn btn-info" id="btnOverlayTest1">
-			Toggle overlay
+		<div class="row">
+			<h1 class="mt-5">QkApp V. <span class="spanQkAppVersion"></span> tests</h1>
 		</div>
-		<div style="height: 150px;" id="divOverlayTest1">
-			<h1>This is overlaid text</h1>
+		<div class="row">
+			<h3 class="mt-5">QkAlert</h3>
 		</div>
-		<h3 class="mt-5">QkOverlay 2</h3>
-		<div class="btn btn-info" id="btnOverlayTest2">
-			Toggle overlay
+		<div class="row">
+			<div class="col">
+				<div class="btn btn-info" id="btnAlertTest1">
+					Trigger alert
+				</div>
+				<div style="height: 150px;" id="divAlertTest1">
+					<h1>This is alert container</h1>
+				</div>
+			</div>
+			<div class="col">
+				<div class="btn btn-info" id="btnAlertTest2">
+					Trigger alert
+				</div>
+				<div style="height: 150px;" id="divAlertTest2">
+					<h1>This is alert container</h1>
+				</div>
+			</div>
 		</div>
-		<div style="height: 150px;" id="divOverlayTest2">
-			<h1>This is overlaid text</h1>
+		<div class="row">
+			<h3 class="mt-5">QkOverlay</h3>
 		</div>
-		<hr />
+		<div class="row">
+			<div class="col">
+				<div class="btn btn-info" id="btnOverlayTest1">
+					Toggle overlay
+				</div>
+				<div style="height: 150px;" id="divOverlayTest1">
+					<h1>This is overlaid text</h1>
+				</div>
+			</div>
+			<div class="col">
+				<div class="btn btn-info" id="btnOverlayTest2">
+					Toggle overlay
+				</div>
+				<div style="height: 150px;" id="divOverlayTest2">
+					<h1>This is overlaid text</h1>
+				</div>
+			</div>
+		</div>
     </main>
 
     <footer class="footer">
@@ -87,6 +115,8 @@
 			var version = QkAppLib.version;
 			$('.spanQkAppVersion').html(version);
 			QkAppLib.register($)
+			test_alert('#divAlertTest1', '#btnAlertTest1');
+			test_alert('#divAlertTest2', '#btnAlertTest2');
 			test_overlay('#divOverlayTest1', '#btnOverlayTest1');
 			test_overlay('#divOverlayTest2', '#btnOverlayTest2');
 		});
