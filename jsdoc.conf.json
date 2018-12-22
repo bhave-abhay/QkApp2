@@ -6,6 +6,14 @@
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
+    "opts": {
+        "encoding": "utf8",
+        "sort": false,
+        "template": "node_modules/ink-docstrap/template",
+        "destination": "docs/",
+        "recurse": true,
+        "tutorials": "src/docs/tutorials"
+    },
     "plugins": ["plugins/staticFiles"],
     "templates": {
       "logoFile": "static/logo.svg",
@@ -16,7 +24,7 @@
       "outputSourcePath": true,
       "systemName": "QkApp",
       "footer": "",
-      "copyright": "(c) 2018 Gadre InfoTech Pvt. Ltd. (IND)",
+      "copyright": "(c) Abhay Bhave - 2018 - Gadre InfoTech Pvt. Ltd. (IND)",
       "navType": "inline",
       "theme": "Paper",
       "linenums": true,
@@ -37,13 +45,5 @@
        "excludePattern": "(^|\\/|\\\\)_",
        "recursive": true,
        "recursiveLevel": 2
-    },
-    "opts": {
-        "encoding": "utf8",
-        "sort": false,
-        "template": "node_modules/ink-docstrap/template",
-        "destination": "docs/",
-        "recurse": true,
-        "tutorials": "src/docs/tutorials"
     }
 }

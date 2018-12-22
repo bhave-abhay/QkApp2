@@ -28,13 +28,28 @@ var cssClassList = [
 ]
 var randomCssClass =()=> cssClassList[Math.floor(Math.random() * cssClassList.length)];
 
-function test_alert(sAlertContainerElementSelector, sAlertTriggerElementSelector) {
+function test_alert(sAlertContainerElementSelector, sAlertTriggerElementSelector, fSingularAlert) {
 	var alertContainer = $(sAlertContainerElementSelector).QkAlert({
-		singularAlert: false
+		singularAlert: (fSingularAlert == true)
 	});
 	$(sAlertTriggerElementSelector).on('click', function (e) {
 		var sMessage = randomMessage();
 		var sCssClass = randomCssClass();
 		alertContainer.show_alert(sMessage + ' (' + sCssClass + ')', sCssClass);
+	})
+}
+
+function test_dialog(dialog, sDialogTriggerElementSelector) {
+	$(sDialogTriggerElementSelector).on('click', function (e) {
+		var sCssClass = randomCssClass();
+		dialog.
+			show_dialog(randomMessage(), randomMessage(), {})
+			.buttons([{
+				sText: 'Ok ' + sCssClass,
+				cssClasses: sCssClass,
+				onClick: ()=>{
+					dialog.hide_dialog();
+				}
+			}]);
 	})
 }

@@ -1,12 +1,11 @@
 var styles = require('./QkOverlayStyles');
 
 /**
- * QkOverlay. An overlay plugin
- * @function QkOverlay
+* @desc QkOverlay. An overlay plugin
+ * @class QkOverlay
  * @memberOf $.fn
- * @return {QkOverlayPlugin}
+ * @hideconstructor
  */
-
 function QkOverlay () {
 
 	function CreateOverlayElt(sMsgHtml, sImgHtml) {
@@ -31,31 +30,29 @@ function QkOverlay () {
 	this.css('position', 'relative');
 
 	 /**
-	 * Shows the overlay
+	 * @desc Shows the overlay
+	 * @function show_overlay
 	 * @param sMsgHtml {string} message html to be shown on overlay
 	 * @param sImgHtml {string} loader image html to be shown on overlay
-	 * @function show_overlay
-	 * @memberOf QkOverlayPlugin
-	 * @instance
+	 * @memberOf QkOverlay
+	 * $@instance
 	 */
 	this.show_overlay = function (sMsgHtml, sImgHtml) {
 		if (eltOverlay !== null) {
 			eltOverlay.detach();
 			eltOverlay = null;
 		}
-		console.log('Showing overlay');
 		eltOverlay = CreateOverlayElt(sMsgHtml, sImgHtml);
 		this.append(eltOverlay);
 	};
 
 	 /**
-	 * Hides the overlay
+	 * @desc Hides the overlay
 	 * @function hide_overlay
-	 * @memberOf QkOverlayPlugin
-	 * @instance
+	 * @memberOf QkOverlay
+	 * $@instance
 	 */
 	this.hide_overlay = function () {
-		console.log('Hiding overlay');
 		if (eltOverlay !== null) {
 			eltOverlay.detach();
 			eltOverlay = null;
@@ -63,10 +60,10 @@ function QkOverlay () {
 	};
 
 	/**
-	* Returns whether this overlay is currently shown
+	* @desc Returns whether this overlay is currently shown
 	* @function is_shown
-	* @memberOf QkOverlayPlugin
-	* @instance
+	* @memberOf QkOverlay
+	* $@instance
 	*/
 	this.is_shown = function () {
 		return (eltOverlay !== null);

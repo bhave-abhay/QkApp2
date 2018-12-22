@@ -1,3 +1,10 @@
+
+/**
+ * @class QkAlert
+ * @memberOf $.fn
+ * @desc QkAlert. An alert plugin
+ * @hideconstructor
+ */
 function QkAlert (objConfig) {
 	function CreateAlertElt(msg, cssClass) {
 		var elt = $('<div></div>')
@@ -9,6 +16,15 @@ function QkAlert (objConfig) {
 	}
 
 	var this_ = this;
+
+	 /**
+	 * @function show_alert
+	 * @param msg {string | $} message html or jQuery to be shown in alert
+	 * @param cssClass {string} css classes to be applied to alert element (in addition to default 'qkalert', 'alert', and 'alert-dismissable')
+	 * @memberOf QkOverlay
+	 * @instance
+	 * @desc Shows the alert
+	 */
 	this_.show_alert = function (msg, cssClass, nTimeoutSec) {
 		if(objConfig.singularAlert){
 			var oldAlertElt = $('.qkalert', this_);

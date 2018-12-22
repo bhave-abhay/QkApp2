@@ -50,6 +50,20 @@
       </nav>
     </header>
 
+	<!-- QkDialog template -->
+	<div data-qkapp-role="dialog" class="modal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
+		<div class="modal-dialog container">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"></h4>
+					<button type="button" class="close" title="Escape">&times;</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+	
     <!-- Begin page content -->
     <main role="main" class="container">
 		<div class="row">
@@ -64,7 +78,7 @@
 					Trigger alert
 				</div>
 				<div style="height: 150px;" id="divAlertTest1">
-					<h1>This is alert container</h1>
+					<h1>This is singular alert container</h1>
 				</div>
 			</div>
 			<div class="col">
@@ -72,7 +86,7 @@
 					Trigger alert
 				</div>
 				<div style="height: 150px;" id="divAlertTest2">
-					<h1>This is alert container</h1>
+					<h1>This is multi-alert container</h1>
 				</div>
 			</div>
 		</div>
@@ -97,28 +111,47 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<h3 class="mt-5">QkDialog</h3>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="btn btn-info" id="btnDialogTest1">
+					Show dialog
+				</div>
+			</div>
+			<div class="col">
+				<div class="btn btn-info" id="btnDialogTest2">
+					Show dialog
+				</div>
+			</div>
+		</div>
     </main>
-
     <footer class="footer">
       <div class="container">
         <span class="text-muted">QkApp v <span class="spanQkAppVersion"></span></span>
       </div>
     </footer>
 	<script src="../vendor/jquery/3.3.1/jquery.js"></script>
-	<script src="../vendor/jquery-ui/1.12.1/jquery-ui.js"></script>
+	<!-- <script src="../vendor/jquery-ui/1.12.1/jquery-ui.js"></script> -->
 	<script src="../vendor/bootstrap/4.0/js/bootstrap.js"></script>
 	<script src="../build/umd/qkapp.bundle.js"></script>
 	<script src="js/tests.js"></script>
 
 	<script type="text/javascript">
+		var x = null;
 		$(function ($) {
 			var version = QkAppLib.version;
 			$('.spanQkAppVersion').html(version);
 			QkAppLib.register($)
-			test_alert('#divAlertTest1', '#btnAlertTest1');
-			test_alert('#divAlertTest2', '#btnAlertTest2');
+			test_alert('#divAlertTest1', '#btnAlertTest1', true);
+			test_alert('#divAlertTest2', '#btnAlertTest2', false);
 			test_overlay('#divOverlayTest1', '#btnOverlayTest1');
 			test_overlay('#divOverlayTest2', '#btnOverlayTest2');
+			var dialog = $($(document).find('*[data-qkapp-role="dialog"]')[0]).QkDialog({});
+			x = dialog;
+			test_dialog(dialog, '#btnDialogTest1');
+			test_dialog(dialog, '#btnDialogTest2');
 		});
 	</script>
 </body>
