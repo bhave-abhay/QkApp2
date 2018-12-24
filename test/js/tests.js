@@ -1,4 +1,4 @@
-function test_overlay(sOverlaidElementSelector, sTogglerElementSelector) {
+function test_overlay(app, sOverlaidElementSelector, sTogglerElementSelector) {
 	var overlay = $(sOverlaidElementSelector).QkOverlay();
 	$(sTogglerElementSelector).on('click', function (e) {
 		if(overlay.is_shown()) {
@@ -28,7 +28,7 @@ var cssClassList = [
 ]
 var randomCssClass =()=> cssClassList[Math.floor(Math.random() * cssClassList.length)];
 
-function test_alert(sAlertContainerElementSelector, sAlertTriggerElementSelector, fSingularAlert) {
+function test_alert(app, sAlertContainerElementSelector, sAlertTriggerElementSelector, fSingularAlert) {
 	var alertContainer = $(sAlertContainerElementSelector).QkAlert({
 		singularAlert: (fSingularAlert == true)
 	});
@@ -39,16 +39,16 @@ function test_alert(sAlertContainerElementSelector, sAlertTriggerElementSelector
 	})
 }
 
-function test_dialog(dialog, sDialogTriggerElementSelector) {
+function test_dialog(app, sDialogTriggerElementSelector, fnGetTitle, fnGetMessage, fnGetSize) {
 	$(sDialogTriggerElementSelector).on('click', function (e) {
 		var sCssClass = randomCssClass();
-		dialog.
-			show_dialog(randomMessage(), randomMessage(), {})
+		app.
+			show_dialog(fnGetTitle(), fnGetMessage(), {}, {'size': fnGetSize()})
 			.buttons([{
 				sText: 'Ok ' + sCssClass,
 				cssClasses: sCssClass,
 				onClick: ()=>{
-					dialog.hide_dialog();
+					app.hide_dialog();
 				}
 			}]);
 	})

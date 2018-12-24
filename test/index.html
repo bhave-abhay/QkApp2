@@ -10,7 +10,7 @@
 	<title></title>
 
 	<link rel="stylesheet" href="../vendor/bootstrap/4.0/css/bootstrap.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="../vendor/jquery-ui/1.12.1/jquery-ui.css">
 	<link href="./css/sticky-footer-navbar.css" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
@@ -21,6 +21,20 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]
 	-->
+	<style media="screen">
+		.testbox {
+			border: 1px solid #c0c0c0;
+			border-radius: 5px;
+			margin-bottom: 5px;
+		}
+		.testbox .row h3{
+			text-align: center;
+			width: 100%;
+			padding: 5px;
+			border-bottom: 1px solid #c0c0c0;
+			background-color: #e0e0e0;
+		}
+	</style>
 </head>
 <body>
 
@@ -52,8 +66,8 @@
     </header>
 
 	<!-- QkDialog template -->
-	<div data-qkapp-role="dialog" class="modal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
-		<div class="modal-dialog container">
+	<div data-qkapp-role="dialog" class="modal fade" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
+		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title"></h4>
@@ -66,64 +80,88 @@
 	</div>
 
     <!-- Begin page content -->
-    <main role="main" class="container">
+    <main role="main" class="container mt-5 pt-2">
 		<div class="row">
-			<h1 class="mt-5">QkApp V. <span class="spanQkAppVersion"></span> tests</h1>
+			<h1>QkApp V. <span class="spanQkAppVersion"></span> tests</h1>
 		</div>
-		<div class="row">
-			<h3 class="mt-5">QkAlert</h3>
-		</div>
-		<div class="row">
+		<div class="row testbox">
 			<div class="col">
-				<div class="btn btn-info" id="btnAlertTest1">
-					Trigger alert
+				<div class="row">
+					<h3>QkAlert</h3>
 				</div>
-				<div style="height: 150px;" id="divAlertTest1">
-					<h1>This is singular alert container</h1>
-				</div>
-			</div>
-			<div class="col">
-				<div class="btn btn-info" id="btnAlertTest2">
-					Trigger alert
-				</div>
-				<div style="height: 150px;" id="divAlertTest2">
-					<h1>This is multi-alert container</h1>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<h3 class="mt-5">QkOverlay</h3>
-		</div>
-		<div class="row">
-			<div class="col">
-				<div class="btn btn-info" id="btnOverlayTest1">
-					Toggle overlay
-				</div>
-				<div style="height: 150px;" id="divOverlayTest1">
-					<h1>This is overlaid text</h1>
-				</div>
-			</div>
-			<div class="col">
-				<div class="btn btn-info" id="btnOverlayTest2">
-					Toggle overlay
-				</div>
-				<div style="height: 150px;" id="divOverlayTest2">
-					<h1>This is overlaid text</h1>
+				<div class="row">
+					<div class="col">
+						<div class="btn btn-info" id="btnAlertTest1">
+							Trigger alert
+						</div>
+						<div id="divAlertTest1">
+							<h1>This is singular alert container</h1>
+						</div>
+					</div>
+					<div class="col">
+						<div class="btn btn-info" id="btnAlertTest2">
+							Trigger alert
+						</div>
+						<div id="divAlertTest2">
+							<h1>This is multi-alert container</h1>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<h3 class="mt-5">QkDialog</h3>
-		</div>
-		<div class="row">
+
+		<div class="row testbox">
 			<div class="col">
-				<div class="btn btn-info" id="btnDialogTest1">
-					Show dialog
+				<div class="row">
+					<h3>QkOverlay</h3>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="btn btn-info" id="btnOverlayTest1">
+							Toggle overlay
+						</div>
+						<div style="height: 150px; border:1px solid #c0c0c0; border-radius: 5px; padding: 5px; margin:5px;" id="divOverlayTest1">
+							<h1>This is overlaid text</h1>
+						</div>
+					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="row testbox">
 			<div class="col">
-				<div class="btn btn-info" id="btnDialogTest2">
-					Show dialog
+				<div class="row">
+					<h3>QkDialog</h3>
+				</div>
+				<div class="row">
+					<div class="col">
+						<table width="100%">
+							<tr>
+								<td colspan="2">
+									<div class="btn btn-info" id="btnDialogTest1">
+										Show dialog
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Size</td>
+								<td>
+									<select class="form-control" id="selSize" name="nSize">
+										<option value="lg">Large</option>
+										<option value="sm">Small</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Title</td>
+								<td><input class="form-control" type="text" name="sTitle" id="txtDialogTitle" value="hi!"></td>
+							</tr>
+							<tr>
+								<td>Message</td>
+								<td><textarea class="form-control" type="textarea" name="sMessage" id="txtDialogMessage">Large message text</textarea></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -144,15 +182,17 @@
 		$(function ($) {
 			var version = QkAppLib.version;
 			$('.spanQkAppVersion').html(version);
-			QkAppLib.register($)
-			test_alert('#divAlertTest1', '#btnAlertTest1', true);
-			test_alert('#divAlertTest2', '#btnAlertTest2', false);
-			test_overlay('#divOverlayTest1', '#btnOverlayTest1');
-			test_overlay('#divOverlayTest2', '#btnOverlayTest2');
-			var dialog = $($(document).find('*[data-qkapp-role="dialog"]')[0]).QkDialog({});
-			x = dialog;
-			test_dialog(dialog, '#btnDialogTest1');
-			test_dialog(dialog, '#btnDialogTest2');
+			var app = new QkAppLib.QkApp($, {})
+			test_alert(app, '#divAlertTest1', '#btnAlertTest1', true);
+			test_alert(app, '#divAlertTest2', '#btnAlertTest2', false);
+			test_overlay(app, '#divOverlayTest1', '#btnOverlayTest1');
+			test_dialog(
+				app,
+				'#btnDialogTest1',
+				()=>$('#txtDialogTitle').val(),
+				()=>$('#txtDialogMessage').val(),
+				()=>$('#selSize').val(),
+			);
 		});
 	</script>
 </body>

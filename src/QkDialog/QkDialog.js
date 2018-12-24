@@ -11,6 +11,7 @@ function QkDialog (objOptions) {
 			dialog_close: $(this.find('.close')[0]),
 			dialog_message: $(this.find('.modal-body')[0]),
 			dialog_footer: $(this.find('.modal-footer')[0]),
+			dialog_dialog: $(this.find('.modal-dialog')[0]),
 			dialog_dialogForm: null
 		};
 		//evet handlers
@@ -43,7 +44,10 @@ function QkDialog (objOptions) {
 			}
 			this_dialog.modal('hide');
 		};
-		this.show_dialog = function (sTitle, objMessage, objFormData, nTimeoutSec) {
+		this.show_dialog = function (sTitle, objMessage, objFormData, options) {
+			if(options === undefined) {
+				options = {};
+			}
 			if (fShown) {
 				this.hide_dialog();
 			}
@@ -53,7 +57,8 @@ function QkDialog (objOptions) {
 			}
 			jqElts.dialog_dialogForm = null;
 			if (typeof objMessage === 'string') {
-				jqElts.dialog_dialogForm = $('<div></div>').append(objMessage).QkForm();
+				var sMessage = objMessage.split('\n').join('<br />');
+				jqElts.dialog_dialogForm = $('<div style="text-align: justify;"></div>').append(sMessage).QkForm();
 			} else if (objMessage instanceof $) {
 				jqElts.dialog_dialogForm = objMessage.show();
 			}
@@ -64,19 +69,19 @@ function QkDialog (objOptions) {
 			$('*[data-qkform-causesvalidation="true"]', jqElts.dialog_dialogForm).removeClass(objOptions.sInvalidInputClass);
 			jqElts.dialog_message.html(jqElts.dialog_dialogForm);
 			this_dialog.on('shown.bs.modal', function () {
-				if (nTimeoutSec !== undefined) {
+				if (options.nTimeoutSec !== undefined) {
 					if (timerID !== null) {
 						clearTimeout(timerID);
 						timerID = null;
 					}
-					timerID = setTimeout(this_dialog.hide_dialog, nTimeoutSec * 1000 /*milliseconds*/);
+					timerID = setTimeout(this_dialog.hide_dialog, options.nTimeoutSec * 1000 /*milliseconds*/);
 				}
 				if (objFormData === undefined) {
 					jqElts.dialog_dialogForm.clearForm();
 				} else {
 					jqElts.dialog_dialogForm.qkval(objFormData);
 				}
-				$(document, jqElts.dialog).keyup(function (e) {
+				$(document, jqElts.dialog).on('keyup', function (e) {
 					if (e.keyCode === 27) { // escape key
 						this_dialog.hide_dialog();
 						e.preventDefault();
@@ -91,7 +96,12 @@ function QkDialog (objOptions) {
 				$(document, jqElts.dialog).off('keyup');
 				fShown = false;
 			});
-
+			if(options.size === 'sm') {
+				jqElts.dialog_dialog.removeClass('modal-lg').addClass('modal-sm');
+			}
+			else if(options.size === 'lg') {
+				jqElts.dialog_dialog.removeClass('modal-sm').addClass('modal-lg');
+			}
 			this_dialog.modal({
 				'backdrop': false,
 				'keyboard': false,
