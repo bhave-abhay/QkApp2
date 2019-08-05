@@ -10,7 +10,8 @@
 	<title></title>
 
 	<link rel="stylesheet" href="../vendor/bootstrap/4.0/css/bootstrap.css">
-	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="../vendor/bootstrap-386/css/bootstrap.css"> -->
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3//bootstrap.min.css"> -->
 	<link rel="stylesheet" href="../vendor/jquery-ui/1.12.1/jquery-ui.css">
 	<link href="./css/sticky-footer-navbar.css" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
@@ -23,7 +24,7 @@
 	-->
 	<style media="screen">
 		.testbox {
-			border: 1px solid #c0c0c0;
+			border: 2px solid #c0c0c0;
 			border-radius: 5px;
 			margin-bottom: 5px;
 		}
@@ -127,7 +128,55 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="row testbox">
+			<div class="col">
+				<div class="row">
+					<h3>QkForm</h3>
+				</div>
+				<div class="row">
+					<div class="col-2 mx-2 btn btn-info" id="btnFormTest_get">
+						Get  value
+					</div>
+					<div class="col-2 mx-2 btn btn-info" id="btnFormTest_set">
+						Set  value
+					</div>
+				</div>
+				<div class="row">
+					<div class="col pt-2" id="testform1">
+						<table width="100%">
+							<tr>
+								<td width="30%">Name</td>
+								<td>
+									<input class="form-control" type="text" name="sFormName" id="txtFormName" value="Abhay Bhave" data-qkform-causesvalidation="true">
+								</td>
+							</tr>
+							<tr>
+								<td>Country</td>
+								<td>
+									<div class="row mx-1">
+										<select class="col form-control" id="selFormCountry" name="country">
+											<option value="IN">India</option>
+											<option value="USA">United States of America</option>
+											<option value="UAE">United Arab Emerates</option>
+										</select>
+										<div id="divFormSelectedCountry" class="col"></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Message</td>
+								<td>
+									<textarea class="form-control" type="textarea" name="sFormMessage" id="txtFormMessage" data-qkform-causesvalidation="true">Message text</textarea>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="text-danger" data-qkform-role="validation-summary"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row testbox">
 			<div class="col">
 				<div class="row">
@@ -158,7 +207,48 @@
 							</tr>
 							<tr>
 								<td>Message</td>
-								<td><textarea class="form-control" type="textarea" name="sMessage" id="txtDialogMessage">Large message text</textarea></td>
+								<td>
+									<textarea class="form-control" type="textarea" name="sMessage" id="txtDialogMessage">Message text</textarea>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row testbox">
+			<div class="col">
+				<div class="row">
+					<h3>QkApi</h3>
+				</div>
+				<div class="row">
+					<div class="col pt-2" id="apiParamForm">
+						<table width="100%">
+							<tr>
+								<td colspan="2">
+									<div class="btn btn-info" id="btnAPITest1">
+										Get a joke!
+									</div>
+									<div>
+										Thank you, <a href="https://sv443.net/jokeapi" target="_blank">Jokes API!</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Category</td>
+								<td>
+									<select class="form-control" id="selCategory">
+										<option value="Programming">Programming</option>
+										<option value="Miscellaneous">Miscellaneous</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div id="divAPITest1">
+										&nbsp;
+									</div>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -174,7 +264,8 @@
 	<script src="../vendor/jquery/3.3.1/jquery.js"></script>
 	<!-- <script src="../vendor/jquery-ui/1.12.1/jquery-ui.js"></script> -->
 	<script src="../vendor/bootstrap/4.0/js/bootstrap.js"></script>
-	<script src="../build/umd/qkapp.bundle.js"></script>
+	<!-- <script src="../vendor/bootstrap-386/js/bootstrap.js"></script> -->
+	<script src="../build/umd-release/qkapp.bundle.js"></script>
 	<script src="js/tests.js"></script>
 
 	<script type="text/javascript">
@@ -182,7 +273,15 @@
 		$(function ($) {
 			var version = QkAppLib.version;
 			$('.spanQkAppVersion').html(version);
-			var app = new QkAppLib.QkApp($, {})
+			var app = new QkAppLib.QkApp($, {
+				apiConfig: {
+					sApiUrlBase: 'https://sv443.net/jokeapi/',
+					decorateRequest: req => ({
+						...req,
+						blacklistFlags:'nsfw'
+					})
+				}
+			});
 			test_alert(app, '#divAlertTest1', '#btnAlertTest1', true);
 			test_alert(app, '#divAlertTest2', '#btnAlertTest2', false);
 			test_overlay(app, '#divOverlayTest1', '#btnOverlayTest1');
@@ -193,6 +292,123 @@
 				()=>$('#txtDialogMessage').val(),
 				()=>$('#selSize').val(),
 			);
+
+			var testform1 = $('#testform1').QkForm({
+				cbInitForm: function () {
+					var $selCountry = $('#selFormCountry');
+					$selCountry.on('change', function (e) {
+						$selected = $('option:selected', $selCountry);
+						$('#divFormSelectedCountry').html(
+							$selected.val() + ' (' + $selected.text() + ')'
+						)
+					});
+				},
+				cbGetData: function () {
+					return {
+						name: $('#txtFormName').val(),
+						country: $('#selFormCountry').val(),
+						message: $('#txtFormMessage').val()
+					}
+				},
+				cbShowData: function (data) {
+					$('#txtFormName').val(data.name);
+					$('#selFormCountry').val(data.country);
+					$('#txtFormMessage').val(data.message);
+				},
+				cbClearForm: function () {
+					$('#txtFormName').val('');
+					$('#selFormCountry').val('');
+					$('#txtFormMessage').val('');
+				},
+				sInvalidInputClass: 'bg-warning'
+			});
+			testform1.on('qkform:validate', function (evt, vetoPoll) {
+			    if ($('#txtFormName').val().trim() === '') {
+			        vetoPoll.veto('Name is required', 'txtFormName');
+			    }
+		    	if ($('#txtFormMessage').val().trim().length < 10) {
+			        vetoPoll.veto('Message must be at least 10 chars long', 'txtFormMessage');
+			    }
+			});
+			$('#btnFormTest_get').on('click', function (e) {
+				var val = testform1.qkval();
+				app.show_dialog(
+					'qkVal of the form: ',
+					'<pre>' + JSON.stringify(val, null, '\t') + '</pre>',
+					{},
+					{
+						nTimeoutSec: 10,
+						size: 'lg'
+					}
+				).buttons([
+					{
+						sText: 'Change',
+						onClick: () => {
+							testform1.qkval({
+								name: 'Abhay A. Bhave',
+								country: 'IN',
+								message: 'Changed Message from Abhay'
+							});
+							app.hide_dialog();
+						}
+					},
+					{
+						sText: 'Clear',
+						onClick: () => {
+							testform1.clearForm();
+							app.hide_dialog();
+						}
+					}
+				]);
+			});
+			$('#btnFormTest_set').on('click', function (e) {
+				var val = testform1.qkval({
+					name: 'Abhay Anand Bhave',
+					country: 'IN',
+					message: 'Message from Abhay'
+				});
+			});
+
+			var apiParamForm = $('#apiParamForm').QkForm({
+				cbInitForm: function () {
+
+				},
+				cbGetData: function () {
+					return {
+						category: $('#selCategory').val()
+					}
+				},
+				cbShowData: function (data) {
+					$('#selCategory').val(category);
+				},
+				cbClearForm: function () {
+					$('#selCategory').val('Any')
+				},
+				sInvalidInputClass: 'bg-warning'
+			});
+			var apiLoader = $('#divAPITest1').QkOverlay();
+			$('#btnAPITest1').on('click', function (e) {
+				apiLoader.show_overlay('Wait a moment...', '');
+				var params = apiParamForm.qkval();
+				app.qkWebApi.get(
+					'category/' + params.category,
+					{}
+				).done(rsp=>{
+					var type = rsp.type;
+					if(type=='single')
+					{
+						$('#divAPITest1').html('<h4>' + rsp.joke.split('\n').join('<br />') + '</h4>');
+					}
+					else if(type=='twopart')
+					{
+						$('#divAPITest1').html(
+							'<h4>' + rsp.setup.split('\n').join('<br />') + '</h4>' +
+							'<h5>' + rsp.delivery.split('\n').join('<br />') + '</h5>'
+						);
+					}
+					apiLoader.hide_overlay();
+				})
+			});
 		});
 	</script>
 </body>

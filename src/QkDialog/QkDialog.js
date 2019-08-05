@@ -1,6 +1,12 @@
 var QkForm = require('../QkForm');
 
-function QkDialog (objOptions) {
+function QkDialog (options) {
+
+		var objOptionsDefault = {
+			sInvalidInputClass: 'warning'
+		};
+
+		var objOptions = $.extend({}, options, objOptionsDefault);
 
 		var timerID = null;
 		var cbOnTimeout = null;

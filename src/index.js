@@ -4,6 +4,7 @@ var QkForm = require('./QkForm');
 var QkDialog = require('./QkDialog');
 
 var QkStorage = require('./QkStorage');
+var QkWebApi = require('./QkWebApi');
 
 function QkApp($, options) {
 	//Add functions to JQuery namespace
@@ -18,26 +19,24 @@ function QkApp($, options) {
 		'eltOverlayContainer': $(document).find('*[data-qkapp-role="overlay-container"]')[0],
 		'eltAlertContainer': $(document).find('*[data-qkapp-role="alert-container"]')[0]
 	};
-	var objOptions = {
-		...options,
-		...objOptionsDefault,
-	};
+	var objOptions = $.extend({}, options, objOptionsDefault);
 
-	var _qk_alert = $(objOptions.eltAlertContainer).QkAlert();
+	var _qk_alert = $(objOptions.eltAlertContainer).QkAlert(objOptions.alertOptions);
 	this.alert = _qk_alert.show_alert.bind(_qk_alert);
 
-	var _qk_dialog = $(objOptions.eltDialog).QkDialog({});
+	var _qk_dialog = $(objOptions.eltDialog).QkDialog(objOptions.dialogOptions);
 	this.show_dialog = _qk_dialog.show_dialog.bind(_qk_dialog);
 	this.hide_dialog = _qk_dialog.hide_dialog.bind(_qk_dialog);
 	this.enable_dialog_button = _qk_dialog.enable_dialog_button.bind(_qk_dialog);
 	this.disable_dialog_button = _qk_dialog.disable_dialog_button.bind(_qk_dialog);
 
-	var _qk_overlay = $(objOptions.eltOverlayContainer).QkOverlay();
+	var _qk_overlay = $(objOptions.eltOverlayContainer).QkOverlay(objOptions.overlayOptions);
 	this.show_overlay = _qk_overlay.show_overlay.bind(_qk_overlay);
 	this.hide_overlay = _qk_overlay.hide_overlay.bind(_qk_overlay);
 
 	this.qkStorage = new QkStorage('app_');
-
+	this.qkWebApi = new QkWebApi(objOptions.apiConfig);
+	
 	this.redirectTo = function (sUrl, message){
 		var objMessage = {
 			'sMessage': '',

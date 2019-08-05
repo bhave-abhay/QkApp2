@@ -7,7 +7,6 @@ var styles = require('./QkOverlayStyles');
  * @hideconstructor
  */
 function QkOverlay () {
-
 	function CreateOverlayElt(sMsgHtml, sImgHtml) {
 		if (sMsgHtml === undefined) {
 			sMsgHtml = '<h1>Loading... please wait!</h1>';
