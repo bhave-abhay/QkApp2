@@ -10,7 +10,7 @@ function QkAlert (objConfig) {
 		var elt = $('<div></div>')
 					.addClass(['qkalert', 'alert', 'alert-dismissable', cssClass])
 					.append(msg)
-					.append('<span class="close" data-dismiss="alert" aria-label="close">X</span>');
+					.append('<span class="close" data-dismiss="alert" aria-label="close">&times;</span>');
 		return elt;
 
 	}

@@ -6,13 +6,30 @@ var styles = require('./QkOverlayStyles');
  * @memberOf $.fn
  * @hideconstructor
  */
-function QkOverlay () {
+function QkOverlay (objOptions) {
+
+	if(objOptions===undefined) {
+		objOptions = {};
+	}
+
+	var objDefaults = {
+		'sMsgHtml': (objOptions.sMsgHtmlDefault == undefined
+						?
+						'<h1>Please wait for a moment...</h1>'
+						:
+						objOptions.sMsgHtmlDefault),
+		'sImgHtml': (objOptions.sImgHtmlDefault == undefined
+						?
+						'<i class="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>'
+						:
+						objOptions.sImgHtmlDefault),
+	}
 	function CreateOverlayElt(sMsgHtml, sImgHtml) {
 		if (sMsgHtml === undefined) {
-			sMsgHtml = '<h1>Loading... please wait!</h1>';
+			sMsgHtml = objDefaults.sMsgHtml;
 		}
 		if (sImgHtml === undefined) {
-			sImgHtml = 'Loader Image';
+			sImgHtml = objDefaults.sImgHtml;
 		}
 		var eltOverlay = $('<div></div>');
 		var eltWrapper = $('<div class="spinDiv"></div>');

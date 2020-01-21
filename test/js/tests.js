@@ -5,7 +5,7 @@ function test_overlay(app, sOverlaidElementSelector, sTogglerElementSelector) {
 			overlay.hide_overlay();
 		}
 		else {
-			overlay.show_overlay('Please wait while background task finishes');
+			overlay.show_overlay();
 		}
 	})
 }

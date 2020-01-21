@@ -55,25 +55,32 @@ function QkForm (objOptions) {
 	this.validate = function () {
 		var evt = new $.Event("qkform:validate");
 		var vetoPoll = new Vetoable();
-		$('*[data-qkform-causesvalidation="true"]', this)
-				.removeClass(objOptions.sInvalidInputClass);
+		$('.form-control', this)
+				.removeClass(objOptions.sInvalidInputClass)
+				.removeClass('is-invalid');
+		$('*[data-qkform-error-for]', this)
+				.html('');
 		jqElts.validationSummary.empty().hide();
 		this.trigger(evt, vetoPoll);
 		if (vetoPoll.isVetoed()) {
 			var arrReasons = vetoPoll.getVetoReasons();
-			let ul = $('<ul></ul>');
+			let ulError = $('<ul></ul>');
 			for (var i = 0; i < arrReasons.length; i++) {
-				if (arrReasons[i].sTarget !== undefined) {
-					$('#' + arrReasons[i].sTarget)
-							.addClass(objOptions.sInvalidInputClass);
+			    var targetElement = $('#' + arrReasons[i].sTarget);
+			    if (targetElement !== undefined) {
+			        targetElement.addClass(objOptions.sInvalidInputClass).addClass('is-invalid');
 				}
 				if (arrReasons[i].sReason !== undefined) {
-					ul.append(
+					ulError.append(
 							$('<li class="text-red"></li>').html(arrReasons[i].sReason)
-							);
+						);
+				    var targetErrorElement = $('[data-qkform-error-for=' + arrReasons[i].sTarget + ']');
+				    if (targetErrorElement !== undefined) {
+				        targetErrorElement.html(arrReasons[i].sReason);
+					}
 				}
 			}
-			jqElts.validationSummary.html(ul).show();
+			jqElts.validationSummary.html(ulError).show();
 			return false;
 		}
 		return true;
@@ -94,6 +101,11 @@ function QkForm (objOptions) {
 
 	this.clearForm = function () {
 		_handlers.cbClearForm();
+		$('.form-control', this)
+				.removeClass(objOptions.sInvalidInputClass)
+				.removeClass('is-invalid');
+		$('*[data-qkform-error-for]', this)
+				.html('');
 	}
 
 	return this;
