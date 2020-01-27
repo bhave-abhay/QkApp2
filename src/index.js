@@ -17,7 +17,8 @@ function QkApp($, options) {
 	var objOptionsDefault = {
 		'eltDialog': $(document).find('*[data-qkapp-role="dialog"]')[0],
 		'eltOverlayContainer': $(document).find('*[data-qkapp-role="overlay-container"]')[0],
-		'eltAlertContainer': $(document).find('*[data-qkapp-role="alert-container"]')[0]
+		'eltAlertContainer': $(document).find('*[data-qkapp-role="alert-container"]')[0],
+		'sStorageItemNamePrefix': '_QkApp_Data_'
 	};
 	var objOptions = $.extend({}, options, objOptionsDefault);
 
@@ -34,9 +35,9 @@ function QkApp($, options) {
 	this.show_overlay = _qk_overlay.show_overlay.bind(_qk_overlay);
 	this.hide_overlay = _qk_overlay.hide_overlay.bind(_qk_overlay);
 
-	this.qkStorage = new QkStorage('app_');
+	this.qkStorage = new QkStorage(objOptions.storageConfig);
 	this.qkWebApi = new QkWebApi(objOptions.apiConfig);
-	
+
 	this.redirectTo = function (sUrl, message){
 		var objMessage = {
 			'sMessage': '',

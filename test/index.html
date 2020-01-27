@@ -264,22 +264,30 @@
 	<script src="../vendor/jquery/3.3.1/jquery.js"></script>
 	<!-- <script src="../vendor/jquery-ui/1.12.1/jquery-ui.js"></script> -->
 	<script src="../vendor/bootstrap/4.0/js/bootstrap.js"></script>
+	
+	<script src="../vendor/CryptoJS/sha512.js"></script>
 	<!-- <script src="../vendor/bootstrap-386/js/bootstrap.js"></script> -->
 	<script src="../build/umd-release/qkapp.bundle.js"></script>
 	<script src="js/tests.js"></script>
 
 	<script type="text/javascript">
-		var x = null;
+		var app = null;
 		$(function ($) {
 			var version = QkAppLib.version;
 			$('.spanQkAppVersion').html(version);
-			var app = new QkAppLib.QkApp($, {
+			app = new QkAppLib.QkApp($, {
 				apiConfig: {
 					sApiUrlBase: 'https://sv443.net/jokeapi/',
 					decorateRequest: req => ({
 						...req,
 						blacklistFlags:'nsfw'
 					})
+				},
+				storageConfig: {
+					sPrefix: 'QkAppTests',
+					fnKeyNameTransform: function(s){
+						return CryptoJS.SHA512(s).toString();
+					}
 				}
 			});
 			test_alert(app, '#divAlertTest1', '#btnAlertTest1', true);
