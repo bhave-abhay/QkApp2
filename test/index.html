@@ -9,7 +9,7 @@
 	<meta name="author" content="">
 	<title></title>
 
-	<link rel="stylesheet" href="../vendor/bootstrap/4.0/css/bootstrap.css">
+	<link rel="stylesheet" href="../vendor/bootstrap/4.4.1/css/bootstrap.css">
 	<!-- <link rel="stylesheet" href="../vendor/bootstrap-386/css/bootstrap.css"> -->
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3//bootstrap.min.css"> -->
 	<link rel="stylesheet" href="../vendor/jquery-ui/1.12.1/jquery-ui.css">
@@ -37,388 +37,396 @@
 		}
 	</style>
 </head>
+
 <body>
 
 	<!-- Fixed navbar -->
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">QkApp Tests</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../docs/index.html">Docs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    </header>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-	<!-- QkDialog template -->
-	<div data-qkapp-role="dialog" class="modal fade" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title"></h4>
-					<button type="button" class="close" title="Escape">&times;</button>
-				</div>
-				<div class="modal-body"></div>
-				<div class="modal-footer"></div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Dropdown
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
 			</div>
-		</div>
-	</div>
-
-    <!-- Begin page content -->
-    <main role="main" class="container mt-5 pt-2">
-		<div class="row">
-			<h1>QkApp V. <span class="spanQkAppVersion"></span> tests</h1>
-		</div>
-		<div class="row testbox">
-			<div class="col">
-				<div class="row">
-					<h3>QkAlert</h3>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="btn btn-info" id="btnAlertTest1">
-							Trigger alert
-						</div>
-						<div id="divAlertTest1">
-							<h1>This is singular alert container</h1>
-						</div>
+		</nav>
+		<!-- QkDialog template -->
+		<div data-qkapp-role="dialog" class="modal fade" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title"></h4>
+						<button type="button" class="close" title="Escape">&times;</button>
 					</div>
-					<div class="col">
-						<div class="btn btn-info" id="btnAlertTest2">
-							Trigger alert
-						</div>
-						<div id="divAlertTest2">
-							<h1>This is multi-alert container</h1>
-						</div>
-					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer"></div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row testbox">
-			<div class="col">
-				<div class="row">
-					<h3>QkOverlay</h3>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="btn btn-info" id="btnOverlayTest1">
-							Toggle overlay
+		<!-- Begin page content -->
+		<main role="main" class="container mt-5 pt-2">
+			<div class="row">
+				<h1>QkApp V. <span class="spanQkAppVersion"></span> tests</h1>
+			</div>
+			<div class="row testbox">
+				<div class="col">
+					<div class="row">
+						<h3>QkAlert</h3>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="btn btn-info" id="btnAlertTest1">
+								Trigger alert
+							</div>
+							<div id="divAlertTest1">
+								<h1>This is singular alert container</h1>
+							</div>
 						</div>
-						<div style="height: 150px; border:1px solid #c0c0c0; border-radius: 5px; padding: 5px; margin:5px;" id="divOverlayTest1">
-							<h1>This is overlaid text</h1>
+						<div class="col">
+							<div class="btn btn-info" id="btnAlertTest2">
+								Trigger alert
+							</div>
+							<div id="divAlertTest2">
+								<h1>This is multi-alert container</h1>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row testbox">
-			<div class="col">
-				<div class="row">
-					<h3>QkForm</h3>
-				</div>
-				<div class="row">
-					<div class="col-2 mx-2 btn btn-info" id="btnFormTest_get">
-						Get  value
+
+			<div class="row testbox">
+				<div class="col">
+					<div class="row">
+						<h3 class="col">
+							QkOverlay
+							<div class="btn-sm btn-info float-right" id="btnOverlayTest1">
+								Toggle overlay
+							</div>
+						</h3>
 					</div>
-					<div class="col-2 mx-2 btn btn-info" id="btnFormTest_set">
-						Set  value
+					<div class="row">
+						<div class="col">
+							<div 
+							 id="divOverlayTest1"
+							style="height: 150px; border:1px solid #c0c0c0; border-radius: 5px; padding: 5px; margin:5px;">
+								<h1>This is overlaid text</h1>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col pt-2" id="testform1">
-						<table width="100%">
-							<tr>
-								<td width="30%">Name</td>
-								<td>
-									<input class="form-control" type="text" name="sFormName" id="txtFormName" value="Abhay Bhave" data-qkform-causesvalidation="true">
-								</td>
-							</tr>
-							<tr>
-								<td>Country</td>
-								<td>
-									<div class="row mx-1">
-										<select class="col form-control" id="selFormCountry" name="country">
-											<option value="IN">India</option>
-											<option value="USA">United States of America</option>
-											<option value="UAE">United Arab Emerates</option>
+			</div>
+			<div class="row testbox">
+				<div class="col">
+					<div class="row">
+						<h3>QkForm</h3>
+					</div>
+					<div class="row">
+						<div class="col-2 mx-2 btn btn-info" id="btnFormTest_get">
+							Get value
+						</div>
+						<div class="col-2 mx-2 btn btn-info" id="btnFormTest_set">
+							Set value
+						</div>
+					</div>
+					<div class="row">
+						<div class="col pt-2" id="testform1">
+							<table width="100%">
+								<tr>
+									<td width="30%">Name</td>
+									<td>
+										<input class="form-control" type="text" name="sFormName" id="txtFormName" value="Abhay Bhave" data-qkform-causesvalidation="true">
+									</td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>
+										<div class="row mx-1">
+											<select class="col form-control" id="selFormCountry" name="country">
+												<option value="IN">India</option>
+												<option value="USA">United States of America</option>
+												<option value="UAE">United Arab Emerates</option>
+											</select>
+											<div id="divFormSelectedCountry" class="col"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Message</td>
+									<td>
+										<textarea class="form-control" type="textarea" name="sFormMessage" id="txtFormMessage" data-qkform-causesvalidation="true">Message text</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="text-danger" data-qkform-role="validation-summary"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row testbox">
+				<div class="col">
+					<div class="row">
+						<h3>QkDialog</h3>
+					</div>
+					<div class="row">
+						<div class="col">
+							<table width="100%">
+								<tr>
+									<td colspan="2">
+										<div class="btn btn-info" id="btnDialogTest1">
+											Show dialog
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Size</td>
+									<td>
+										<select class="form-control" id="selSize" name="nSize">
+											<option value="lg">Large</option>
+											<option value="sm">Small</option>
 										</select>
-										<div id="divFormSelectedCountry" class="col"></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Message</td>
-								<td>
-									<textarea class="form-control" type="textarea" name="sFormMessage" id="txtFormMessage" data-qkform-causesvalidation="true">Message text</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" class="text-danger" data-qkform-role="validation-summary"></td>
-							</tr>
-						</table>
+									</td>
+								</tr>
+								<tr>
+									<td>Title</td>
+									<td><input class="form-control" type="text" name="sTitle" id="txtDialogTitle" value="hi!"></td>
+								</tr>
+								<tr>
+									<td>Message</td>
+									<td>
+										<textarea class="form-control" type="textarea" name="sMessage" id="txtDialogMessage">Message text</textarea>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row testbox">
-			<div class="col">
-				<div class="row">
-					<h3>QkDialog</h3>
-				</div>
-				<div class="row">
-					<div class="col">
-						<table width="100%">
-							<tr>
-								<td colspan="2">
-									<div class="btn btn-info" id="btnDialogTest1">
-										Show dialog
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Size</td>
-								<td>
-									<select class="form-control" id="selSize" name="nSize">
-										<option value="lg">Large</option>
-										<option value="sm">Small</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>Title</td>
-								<td><input class="form-control" type="text" name="sTitle" id="txtDialogTitle" value="hi!"></td>
-							</tr>
-							<tr>
-								<td>Message</td>
-								<td>
-									<textarea class="form-control" type="textarea" name="sMessage" id="txtDialogMessage">Message text</textarea>
-								</td>
-							</tr>
-						</table>
+			<div class="row testbox">
+				<div class="col">
+					<div class="row">
+						<h3>QkApi</h3>
+					</div>
+					<div class="row">
+						<div class="col pt-2" id="apiParamForm">
+							<table width="100%">
+								<tr>
+									<td colspan="2">
+										<div class="btn btn-info" id="btnAPITest1">
+											Get a joke!
+										</div>
+										<div>
+											Thank you, <a href="https://sv443.net/jokeapi" target="_blank">Jokes API!</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Category</td>
+									<td>
+										<select class="form-control" id="selCategory">
+											<option value="Programming">Programming</option>
+											<option value="Miscellaneous">Miscellaneous</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div id="divAPITest1">
+											&nbsp;
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row testbox">
-			<div class="col">
-				<div class="row">
-					<h3>QkApi</h3>
-				</div>
-				<div class="row">
-					<div class="col pt-2" id="apiParamForm">
-						<table width="100%">
-							<tr>
-								<td colspan="2">
-									<div class="btn btn-info" id="btnAPITest1">
-										Get a joke!
-									</div>
-									<div>
-										Thank you, <a href="https://sv443.net/jokeapi" target="_blank">Jokes API!</a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Category</td>
-								<td>
-									<select class="form-control" id="selCategory">
-										<option value="Programming">Programming</option>
-										<option value="Miscellaneous">Miscellaneous</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<div id="divAPITest1">
-										&nbsp;
-									</div>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<span class="text-muted">QkApp v <span class="spanQkAppVersion"></span></span>
 			</div>
-		</div>
-    </main>
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">QkApp v <span class="spanQkAppVersion"></span></span>
-      </div>
-    </footer>
-	<script src="../vendor/jquery/3.3.1/jquery.js"></script>
-	<!-- <script src="../vendor/jquery-ui/1.12.1/jquery-ui.js"></script> -->
-	<script src="../vendor/bootstrap/4.0/js/bootstrap.js"></script>
-	
-	<script src="../vendor/CryptoJS/sha512.js"></script>
-	<!-- <script src="../vendor/bootstrap-386/js/bootstrap.js"></script> -->
-	<script src="../build/umd-release/qkapp.bundle.js"></script>
-	<script src="js/tests.js"></script>
+		</footer>
+		<script src="../vendor/jquery/3.3.1/jquery.js"></script>
+		<!-- <script src="../vendor/jquery-ui/1.12.1/jquery-ui.js"></script> -->
+		<script src="../vendor/bootstrap/4.4.1/js/bootstrap.js"></script>
 
-	<script type="text/javascript">
-		var app = null;
-		$(function ($) {
-			var version = QkAppLib.version;
-			$('.spanQkAppVersion').html(version);
-			app = new QkAppLib.QkApp($, {
-				apiConfig: {
-					sApiUrlBase: 'https://sv443.net/jokeapi/',
-					decorateRequest: req => ({
-						...req,
-						blacklistFlags:'nsfw'
-					})
-				},
-				storageConfig: {
-					sPrefix: 'QkAppTests',
-					fnKeyNameTransform: function(s){
-						return CryptoJS.SHA512(s).toString();
-					}
-				}
-			});
-			test_alert(app, '#divAlertTest1', '#btnAlertTest1', true);
-			test_alert(app, '#divAlertTest2', '#btnAlertTest2', false);
-			test_overlay(app, '#divOverlayTest1', '#btnOverlayTest1');
-			test_dialog(
-				app,
-				'#btnDialogTest1',
-				()=>$('#txtDialogTitle').val(),
-				()=>$('#txtDialogMessage').val(),
-				()=>$('#selSize').val(),
-			);
+		<script src="../vendor/CryptoJS/sha512.js"></script>
+		<!-- <script src="../vendor/bootstrap-386/js/bootstrap.js"></script> -->
+		<script src="../build/umd-release/qkapp.bundle.js"></script>
+		<script src="js/tests.js"></script>
 
-			var testform1 = $('#testform1').QkForm({
-				cbInitForm: function () {
-					var $selCountry = $('#selFormCountry');
-					$selCountry.on('change', function (e) {
-						$selected = $('option:selected', $selCountry);
-						$('#divFormSelectedCountry').html(
-							$selected.val() + ' (' + $selected.text() + ')'
-						)
-					});
-				},
-				cbGetData: function () {
-					return {
-						name: $('#txtFormName').val(),
-						country: $('#selFormCountry').val(),
-						message: $('#txtFormMessage').val()
+		<script type="text/javascript">
+			var app = null;
+			$(function($) {
+				var version = QkAppLib.version;
+				$('.spanQkAppVersion').html(version);
+				app = new QkAppLib.QkApp($, {
+					apiConfig: {
+						sApiUrlBase: 'https://sv443.net/jokeapi/',
+						decorateRequest: req => ({
+							...req,
+							blacklistFlags: 'nsfw'
+						})
+					},
+					storageConfig: {
+						sPrefix: 'QkAppTests',
+						fnKeyNameTransform: function(s) {
+							return CryptoJS.SHA512(s).toString();
+						}
 					}
-				},
-				cbShowData: function (data) {
-					$('#txtFormName').val(data.name);
-					$('#selFormCountry').val(data.country);
-					$('#txtFormMessage').val(data.message);
-				},
-				cbClearForm: function () {
-					$('#txtFormName').val('');
-					$('#selFormCountry').val('');
-					$('#txtFormMessage').val('');
-				},
-				sInvalidInputClass: 'bg-warning'
-			});
-			testform1.on('qkform:validate', function (evt, vetoPoll) {
-			    if ($('#txtFormName').val().trim() === '') {
-			        vetoPoll.veto('Name is required', 'txtFormName');
-			    }
-		    	if ($('#txtFormMessage').val().trim().length < 10) {
-			        vetoPoll.veto('Message must be at least 10 chars long', 'txtFormMessage');
-			    }
-			});
-			$('#btnFormTest_get').on('click', function (e) {
-				var val = testform1.qkval();
-				app.show_dialog(
-					'qkVal of the form: ',
-					'<pre>' + JSON.stringify(val, null, '\t') + '</pre>',
-					{},
-					{
-						nTimeoutSec: 10,
-						size: 'lg'
-					}
-				).buttons([
-					{
-						sText: 'Change',
-						onClick: () => {
-							testform1.qkval({
-								name: 'Abhay A. Bhave',
-								country: 'IN',
-								message: 'Changed Message from Abhay'
-							});
-							app.hide_dialog();
+				});
+				test_alert(app, '#divAlertTest1', '#btnAlertTest1', true);
+				test_alert(app, '#divAlertTest2', '#btnAlertTest2', false);
+				test_overlay(app, '#divOverlayTest1', '#btnOverlayTest1');
+				test_dialog(
+					app,
+					'#btnDialogTest1',
+					() => $('#txtDialogTitle').val(),
+					() => $('#txtDialogMessage').val(),
+					() => $('#selSize').val(),
+				);
+
+				var testform1 = $('#testform1').QkForm({
+					cbInitForm: function() {
+						var $selCountry = $('#selFormCountry');
+						$selCountry.on('change', function(e) {
+							$selected = $('option:selected', $selCountry);
+							$('#divFormSelectedCountry').html(
+								$selected.val() + ' (' + $selected.text() + ')'
+							)
+						});
+					},
+					cbGetData: function() {
+						return {
+							name: $('#txtFormName').val(),
+							country: $('#selFormCountry').val(),
+							message: $('#txtFormMessage').val()
 						}
 					},
-					{
-						sText: 'Clear',
-						onClick: () => {
-							testform1.clearForm();
-							app.hide_dialog();
-						}
+					cbShowData: function(data) {
+						$('#txtFormName').val(data.name);
+						$('#selFormCountry').val(data.country);
+						$('#txtFormMessage').val(data.message);
+					},
+					cbClearForm: function() {
+						$('#txtFormName').val('');
+						$('#selFormCountry').val('');
+						$('#txtFormMessage').val('');
+					},
+					sInvalidInputClass: 'bg-warning'
+				});
+				testform1.on('qkform:validate', function(evt, vetoPoll) {
+					if ($('#txtFormName').val().trim() === '') {
+						vetoPoll.veto('Name is required', 'txtFormName');
 					}
-				]);
-			});
-			$('#btnFormTest_set').on('click', function (e) {
-				var val = testform1.qkval({
-					name: 'Abhay Anand Bhave',
-					country: 'IN',
-					message: 'Message from Abhay'
+					if ($('#txtFormMessage').val().trim().length < 10) {
+						vetoPoll.veto('Message must be at least 10 chars long', 'txtFormMessage');
+					}
+				});
+				$('#btnFormTest_get').on('click', function(e) {
+					var val = testform1.qkval();
+					app.show_dialog(
+						'qkVal of the form: ',
+						'<pre>' + JSON.stringify(val, null, '\t') + '</pre>', {}, {
+							nTimeoutSec: 10,
+							size: 'lg'
+						}
+					).buttons([{
+							sText: 'Change',
+							onClick: () => {
+								testform1.qkval({
+									name: 'Abhay A. Bhave',
+									country: 'IN',
+									message: 'Changed Message from Abhay'
+								});
+								app.hide_dialog();
+							}
+						},
+						{
+							sText: 'Clear',
+							onClick: () => {
+								testform1.clearForm();
+								app.hide_dialog();
+							}
+						}
+					]);
+				});
+				$('#btnFormTest_set').on('click', function(e) {
+					var val = testform1.qkval({
+						name: 'Abhay Anand Bhave',
+						country: 'IN',
+						message: 'Message from Abhay'
+					});
+				});
+
+				var apiParamForm = $('#apiParamForm').QkForm({
+					cbInitForm: function() {
+
+					},
+					cbGetData: function() {
+						return {
+							category: $('#selCategory').val()
+						}
+					},
+					cbShowData: function(data) {
+						$('#selCategory').val(category);
+					},
+					cbClearForm: function() {
+						$('#selCategory').val('Any')
+					},
+					sInvalidInputClass: 'bg-warning'
+				});
+				var apiLoader = $('#divAPITest1').QkOverlay();
+				$('#btnAPITest1').on('click', function(e) {
+					apiLoader.show_overlay();
+					var params = apiParamForm.qkval();
+					app.qkWebApi.get(
+						'category/' + params.category, {}
+					).done(rsp => {
+						var type = rsp.type;
+						if (type == 'single') {
+							$('#divAPITest1').html('<h4>' + rsp.joke.split('\n').join('<br />') + '</h4>');
+						} else if (type == 'twopart') {
+							$('#divAPITest1').html(
+								'<h4>' + rsp.setup.split('\n').join('<br />') + '</h4>' +
+								'<h5>' + rsp.delivery.split('\n').join('<br />') + '</h5>'
+							);
+						}
+						apiLoader.hide_overlay();
+					})
 				});
 			});
-
-			var apiParamForm = $('#apiParamForm').QkForm({
-				cbInitForm: function () {
-
-				},
-				cbGetData: function () {
-					return {
-						category: $('#selCategory').val()
-					}
-				},
-				cbShowData: function (data) {
-					$('#selCategory').val(category);
-				},
-				cbClearForm: function () {
-					$('#selCategory').val('Any')
-				},
-				sInvalidInputClass: 'bg-warning'
-			});
-			var apiLoader = $('#divAPITest1').QkOverlay();
-			$('#btnAPITest1').on('click', function (e) {
-				apiLoader.show_overlay('Wait a moment...', '');
-				var params = apiParamForm.qkval();
-				app.qkWebApi.get(
-					'category/' + params.category,
-					{}
-				).done(rsp=>{
-					var type = rsp.type;
-					if(type=='single')
-					{
-						$('#divAPITest1').html('<h4>' + rsp.joke.split('\n').join('<br />') + '</h4>');
-					}
-					else if(type=='twopart')
-					{
-						$('#divAPITest1').html(
-							'<h4>' + rsp.setup.split('\n').join('<br />') + '</h4>' +
-							'<h5>' + rsp.delivery.split('\n').join('<br />') + '</h5>'
-						);
-					}
-					apiLoader.hide_overlay();
-				})
-			});
-		});
-	</script>
+		</script>
 </body>
 
 </html>

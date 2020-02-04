@@ -15,12 +15,12 @@ function QkOverlay (objOptions) {
 	var objDefaults = {
 		'sMsgHtml': (objOptions.sMsgHtmlDefault == undefined
 						?
-						'<h1>Please wait for a moment...</h1>'
+						'Please wait...'
 						:
 						objOptions.sMsgHtmlDefault),
 		'sImgHtml': (objOptions.sImgHtmlDefault == undefined
 						?
-						'<i class="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>'
+						'<div class="spinner-border text-primary" role="status"></div>'
 						:
 						objOptions.sImgHtmlDefault),
 	}
