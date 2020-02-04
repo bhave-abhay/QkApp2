@@ -1,6 +1,6 @@
 {
 	"name": "QkApp",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "JQuery-Bootstrap based util library for a simplified UI development workflow",
 	"main": "src/index.js",
 	"author": "Abhay Bhave <abhay.bhave@gadreinfotech.com>",
