@@ -43,8 +43,6 @@ function QkOverlay (objOptions) {
 
 	var eltOverlay = null;
 
-	this.css('position', 'relative');
-
 	 /**
 	 * @desc Shows the overlay
 	 * @function show_overlay

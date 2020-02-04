@@ -2,36 +2,34 @@ function QkStorage (storageOptions) {
 
 	var getPersistantStorage = () => window.localStorage;
 	var getVolatileStorage = () => window.sessionStorage;
+	var getKeyName = (s) => (storageOptions.sPrefix + s);
 	
-	this.getKeyName = (s) => (storageOptions.sPrefix + s);
 	if(typeof(storageOptions.fnKeyNameTransform) == 'function') {
-		this.getKeyName = function(s){
-			return storageOptions.fnKeyNameTransform(storageOptions.sPrefix + s);
-		};
+		getKeyName = (s) => storageOptions.fnKeyNameTransform(storageOptions.sPrefix + s);
 	}
 
 	this.getItem = function (sName) {
-		return getVolatileStorage().getItem(this.getKeyName(sName));
+		return getVolatileStorage().getItem(getKeyName(sName));
 	};
 
 	this.setItem = function (sName, sValue) {
-		getVolatileStorage().setItem(this.getKeyName(sName), sValue);
+		getVolatileStorage().setItem(getKeyName(sName), sValue);
 	};
 
 	this.removeItem = function (sName) {
-		getVolatileStorage().removeItem(this.getKeyName(sName));
+		getVolatileStorage().removeItem(getKeyName(sName));
 	};
 
 	this.getPersistantItem = function (sName) {
-		return getPersistantStorage().getItem(this.getKeyName(sName));
+		return getPersistantStorage().getItem(getKeyName(sName));
 	};
 
 	this.setPersistantItem = function (sName, sValue) {
-		getPersistantStorage().setItem(this.getKeyName(sName), sValue);
+		getPersistantStorage().setItem(getKeyName(sName), sValue);
 	};
 
 	this.removePersistantItem = function (sName) {
-		getPersistantStorage().removeItem(this.getKeyName(sName));
+		getPersistantStorage().removeItem(getKeyName(sName));
 	};
 };
 

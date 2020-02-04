@@ -39,7 +39,7 @@ function QkForm (objOptions) {
 		_handlers.cbClearForm = objOptions.cbClearForm;
 	}
 
-	_handlers.cbInitForm();
+	_handlers.cbInitForm.call(this);
 	//event handlers
 	{
 		let this_form = this;
@@ -66,18 +66,18 @@ function QkForm (objOptions) {
 			var arrReasons = vetoPoll.getVetoReasons();
 			let ulError = $('<ul></ul>');
 			for (var i = 0; i < arrReasons.length; i++) {
-			    var targetElement = $('#' + arrReasons[i].sTarget);
-			    if (targetElement !== undefined) {
+			    if (arrReasons[i].sTarget !== undefined) {
+					var targetElement = $('#' + arrReasons[i].sTarget);
 			        targetElement.addClass(objOptions.sInvalidInputClass).addClass('is-invalid');
+					var targetErrorElement = $('[data-qkform-error-for=' + arrReasons[i].sTarget + ']');
+					if (targetErrorElement !== undefined) {
+						targetErrorElement.html(arrReasons[i].sReason);
+					}
 				}
 				if (arrReasons[i].sReason !== undefined) {
 					ulError.append(
 							$('<li class="text-red"></li>').html(arrReasons[i].sReason)
 						);
-				    var targetErrorElement = $('[data-qkform-error-for=' + arrReasons[i].sTarget + ']');
-				    if (targetErrorElement !== undefined) {
-				        targetErrorElement.html(arrReasons[i].sReason);
-					}
 				}
 			}
 			jqElts.validationSummary.html(ulError).show();
@@ -89,18 +89,18 @@ function QkForm (objOptions) {
 	this.qkval = function (newVal) {
 		if (newVal === undefined) { //Get
 			if (this.validate()) {
-				return _handlers.cbGetData();
+				return _handlers.cbGetData.call(this);
 			}
 			return undefined;
 		} else { //Set
-			_handlers.cbShowData(newVal);
+			_handlers.cbShowData.call(this, newVal);
 			$('*[data-qkform-causesvalidation="true"]', this).removeClass(objOptions.sInvalidInputClass);
 			jqElts.validationSummary.empty().hide();
 		}
 	};
 
 	this.clearForm = function () {
-		_handlers.cbClearForm();
+		_handlers.cbClearForm.call(this);
 		$('.form-control', this)
 				.removeClass(objOptions.sInvalidInputClass)
 				.removeClass('is-invalid');
