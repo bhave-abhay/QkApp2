@@ -7,9 +7,9 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"build-umd-release": "node .\\node_modules\\browserify\\bin\\cmd.js -e src\\index.js -o build\\umd-release\\qkapp.bundle.js -s QkAppLib",
-		"build-umd-debug": "node .\\node_modules\\browserify\\bin\\cmd.js -e src\\index.js -o build\\umd-debug\\qkapp.bundle.js -s QkAppLib -d",
-		"build-docs": "node .\\node_modules\\jsdoc\\jsdoc.js -c .\\jsdoc.conf.json -R .\\src\\docs\\Readme.md .\\src\\"
+		"build-umd-release": "node ./node_modules/browserify/bin/cmd.js -e src/index.js -o build/umd-release/qkapp.bundle.js -s QkAppLib",
+		"build-umd-debug": "node ./node_modules/browserify/bin/cmd.js -e src/index.js -o build/umd-debug/qkapp.bundle.js -s QkAppLib -d",
+		"build-docs": "node ./node_modules/jsdoc/jsdoc.js -c ./jsdoc.conf.json -R ./src/docs/Readme.md ./src/"
 	},
 	"devDependencies": {
 		"browserify": "^16.2.3",
